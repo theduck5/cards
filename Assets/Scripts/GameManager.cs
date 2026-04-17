@@ -60,14 +60,16 @@ public class GameManager : MonoBehaviour
     void Shuffle()
     {
         print("EVERYDAY IM SHUFFLING");
-
-        for (int i = discard_pile.Count - 1; i > 0; i--)
+        if (discard_pile.Count > 0)
         {
-            int NewCard = (int)RNG(0,discard_pile.Count - 1);
-            deck.Add(discard_pile[NewCard]);
-            discard_pile.Remove(discard_pile[NewCard]);
+            for (int i = discard_pile.Count; i > 0; i--)
+            {
+                int NewCard = (int)RNG(0,discard_pile.Count - 1);
+                player_deck.Add(discard_pile[NewCard]);
+                discard_pile.Remove(discard_pile[NewCard]);
+                print("Card back to deck");
+            }
         }
-        Deal();
     }
 
     void AI_Turn()

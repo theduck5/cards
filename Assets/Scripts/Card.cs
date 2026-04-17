@@ -20,6 +20,8 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI usesText;
     public TextMeshProUGUI damageText;
     public Image spriteImage;
+    int useCount =0;
+    GameManager GM;
         
 
     // Start is called before the first frame update
@@ -37,12 +39,21 @@ public class Card : MonoBehaviour
         usesText.text = uses.ToString();
         damageText.text = damage.ToString();
         spriteImage.sprite = sprite;
+        GM = FindAnyObjectByType<GameManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(useCount>=uses)
+        {
+            GM.player_hand.Remove(data);
+            GM.discard_pile.Add(data);
+            Destroy(this.gameObject);
+        }
     }
+
+
+
 }
