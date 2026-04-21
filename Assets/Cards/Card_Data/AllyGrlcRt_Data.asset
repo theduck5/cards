@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c025b4487bfbb41fca186c7d9d6e18a5, type: 3}
   m_Name: AllyGrlcRt_Data
   m_EditorClassIdentifier: Assembly-CSharp::Card_data
-  card_name: byguv hjgvfhy
-  description: 
+  card_name: Ally Garlic Rat
+  description: red demon
   health: 0
-  uses: 0
-  damage: 0
-  sprite: {fileID: 0}
+  uses: 1
+  damage: 9
+  sprite: {fileID: 1628195588914703817, guid: d0074e6fdc5a6460b9c6db7db0159885, type: 3}

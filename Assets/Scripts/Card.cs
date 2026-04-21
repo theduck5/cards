@@ -22,6 +22,7 @@ public class Card : MonoBehaviour
     public Image spriteImage;
     int useCount =0;
     GameManager GM;
+    public Button myButton;
         
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class Card : MonoBehaviour
         spriteImage.sprite = sprite;
         GM = FindAnyObjectByType<GameManager>();
 
+        myButton.onClick.AddListener(onbuttonclicked);
     }
 
     // Update is called once per frame
@@ -54,6 +56,12 @@ public class Card : MonoBehaviour
         }
     }
 
+    void onbuttonclicked()
+    {
+        GM.player_hand.Remove(data);
+        GM.discard_pile.Add(data);
+        Destroy(this.gameObject);
+    }
 
 
 }
