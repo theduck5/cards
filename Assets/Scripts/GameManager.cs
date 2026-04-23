@@ -41,8 +41,12 @@ public class GameManager : MonoBehaviour
 
     void Deal()
     {
-        if (player_deck.Count > 0)
+        for (int i = player_hand.Count; i <3; i++)
         {
+            if (player_deck.Count<= 0)
+            {
+                Shuffle();
+            }
             int NewCard = (int) RNG(0,player_deck.Count-1);
             player_hand.Add(player_deck[NewCard]);
 
@@ -50,10 +54,6 @@ public class GameManager : MonoBehaviour
             AddCard.data = player_deck[NewCard];
             AddCard.name = AddCard.data.card_name;
             player_deck.Remove(player_deck [NewCard]);
-        }
-       else
-        {
-            Shuffle();
         }
     }
 
