@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
-    public List<Card_data> deck = new List<Card_data>();
+      public List<Card_data> deck = new List<Card_data>();
     public List<Card_data> player_deck = new List<Card_data>();
     public List<Card_data> ai_deck = new List<Card_data>();
     public List<Card_data> player_hand = new List<Card_data>();
