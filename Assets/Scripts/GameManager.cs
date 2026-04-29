@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour
     public List<Card_data> discard_pile = new List<Card_data>();
     [SerializeField] Card blank;
     [SerializeField] Canvas canvas;
+    public bool open1 = true;
+    public bool open2 = true;
+    public bool open3 = true;
+    public Vector3 slot1 = new(0,0,0);
+    public Vector3 slot2 = new(0,0,0);
+    public Vector3 slot3 = new(0,0,0);
+    public Vector2 canvasCanas;
 
     private void Awake()
     {
@@ -36,7 +43,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        canvasCanas = canvas.renderingDisplaySize;
     }
 
     void Deal()
@@ -47,13 +54,22 @@ public class GameManager : MonoBehaviour
             {
                 Shuffle();
             }
+
+            Vector3 position = new(0,0,0);
+            int slot0 = 0;
+            if (open1) {position = slot1; open1 = false; slot0 = 1;}
+            else if(open2) {position = slot2; open2 = false; slot0 = 2;}
+            else if(open3) {position = slot3; open3 = false; slot0 = 3;}
+
             int NewCard = (int) RNG(0,player_deck.Count-1);
             player_hand.Add(player_deck[NewCard]);
 
-            Card AddCard = Instantiate(blank,new(0,0,0),Quaternion.identity,canvas.transform);
+            Card AddCard = Instantiate(blank,position,Quaternion.identity,canvas.transform);
             AddCard.data = player_deck[NewCard];
             AddCard.name = AddCard.data.card_name;
             player_deck.Remove(player_deck [NewCard]);
+            AddCard.slot0 = slot0;
+            AddCard.transform.Translate(canvasCanas/2);
         }
     }
 

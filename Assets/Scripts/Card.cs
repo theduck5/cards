@@ -23,6 +23,7 @@ public class Card : MonoBehaviour
     int useCount =0;
     GameManager GM;
     public Button myButton;
+    public int slot0 = 0;
         
 
     // Start is called before the first frame update
@@ -60,6 +61,11 @@ public class Card : MonoBehaviour
     {
         GM.player_hand.Remove(data);
         GM.discard_pile.Add(data);
+
+        if (slot0 == 1) {GM.open1 = true;}
+        if (slot0 == 2) {GM.open2 = true;}
+        if (slot0 == 3) {GM.open3 = true;}
+
         Destroy(this.gameObject);
     }
 
