@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public List<Card_data> player_hand = new List<Card_data>();
     public List<Card_data> ai_hand = new List<Card_data>();
     public List<Card_data> discard_pile = new List<Card_data>();
+    public List<Card_data> ai_discard_pile = new List<Card_data>();
     [SerializeField] Card blank;
     [SerializeField] Canvas canvas;
     public bool open1 = true;
@@ -20,6 +21,12 @@ public class GameManager : MonoBehaviour
     public Vector3 slot1 = new(0,0,0);
     public Vector3 slot2 = new(0,0,0);
     public Vector3 slot3 = new(0,0,0);
+    public bool aiopen1 = true;
+    public bool aiopen2 = true;
+    public bool aiopen3 = true;
+    public Vector3 aislot1 = new(0,0,0);
+    public Vector3 aislot2 = new(0,0,0);
+    public Vector3 aislot3 = new(0,0,0);
     public Vector2 canvasCanas;
 
     private void Awake()
@@ -87,7 +94,47 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    void AIDeal()
+    {
+        for (int i = ai_hand.Count; i <3; i++)
+        {
+            if (ai_deck.Count<= 0)
+            {
+                AIShuffle();
+            }
 
+            Vector3 position = new(0,0,0);
+            int slot0 = 0;
+            if (aiopen1) {position = aislot1; aiopen1 = false; slot0 = 1;}
+            else if(aiopen2) {position = aislot2; aiopen2 = false; slot0 = 2;}
+            else if(aiopen3) {position = aislot3; aiopen3 = false; slot0 = 3;}
+
+            int NewCard = (int) RNG(0,ai_deck.Count-1);
+            ai_hand.Add(ai_deck[NewCard]);
+
+            Card AddCard = Instantiate(blank,position,Quaternion.identity,canvas.transform);
+            AddCard.data = ai_deck[NewCard];
+            AddCard.isPlayer = false;
+            AddCard.name = AddCard.data.card_name + " (AI)";
+            ai_deck.Remove(ai_deck [NewCard]);
+            AddCard.slot0 = slot0;
+            AddCard.transform.Translate(canvasCanas/2);
+        }
+    }
+    void AIShuffle()
+    {
+        print("EVERYDAY IM SHUFFLING");
+        if (ai_discard_pile.Count > 0)
+        {
+            for (int i = ai_discard_pile.Count; i > 0; i--)
+            {
+                int NewCard = (int)RNG(0,ai_discard_pile.Count - 1);
+                ai_deck.Add(ai_discard_pile[NewCard]);
+                ai_discard_pile.Remove(ai_discard_pile[NewCard]);
+                print("Card back to deck");
+            }
+        }
+    }
     void AI_Turn()
     {
 
@@ -103,6 +150,7 @@ public class GameManager : MonoBehaviour
         if (Context.performed)
         {
             Deal();
+            AIDeal();
         }
     }
 

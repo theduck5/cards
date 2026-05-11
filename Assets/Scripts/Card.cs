@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI usesText;
     public TextMeshProUGUI damageText;
     public Image spriteImage;
+    public bool isPlayer = true; 
     int useCount =0;
     GameManager GM;
     public Button myButton;
@@ -59,14 +60,17 @@ public class Card : MonoBehaviour
 
     void onbuttonclicked()
     {
-        GM.player_hand.Remove(data);
-        GM.discard_pile.Add(data);
+        if(isPlayer)
+        {
+            GM.player_hand.Remove(data);
+            GM.discard_pile.Add(data);
 
-        if (slot0 == 1) {GM.open1 = true;}
-        if (slot0 == 2) {GM.open2 = true;}
-        if (slot0 == 3) {GM.open3 = true;}
+            if (slot0 == 1) {GM.open1 = true;}
+            if (slot0 == 2) {GM.open2 = true;}
+            if (slot0 == 3) {GM.open3 = true;}
 
-        Destroy(this.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 
 

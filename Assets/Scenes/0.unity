@@ -155,10 +155,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 406bc51e371194b26a0a5639931ce9fa, type: 2}
   - {fileID: 11400000, guid: 92385e96a18374f58adf99d2f8c7a3b7, type: 2}
   - {fileID: 11400000, guid: 92385e96a18374f58adf99d2f8c7a3b7, type: 2}
-  ai_deck: []
+  ai_deck:
+  - {fileID: 11400000, guid: 4253cb031872b405fa7a9f5a77b326ac, type: 2}
+  - {fileID: 11400000, guid: 4253cb031872b405fa7a9f5a77b326ac, type: 2}
+  - {fileID: 11400000, guid: 406bc51e371194b26a0a5639931ce9fa, type: 2}
+  - {fileID: 11400000, guid: 406bc51e371194b26a0a5639931ce9fa, type: 2}
   player_hand: []
   ai_hand: []
   discard_pile: []
+  ai_discard_pile: []
   blank: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
   canvas: {fileID: 4392464444410497821}
   open1: 1
@@ -167,6 +172,12 @@ MonoBehaviour:
   slot1: {x: -300, y: -200, z: 0}
   slot2: {x: 0, y: -200, z: 0}
   slot3: {x: 300, y: -200, z: 0}
+  aiopen1: 1
+  aiopen2: 1
+  aiopen3: 1
+  aislot1: {x: -300, y: 200, z: 0}
+  aislot2: {x: 0, y: 200, z: 0}
+  aislot3: {x: 300, y: 200, z: 0}
   canvasCanas: {x: 0, y: 0}
 --- !u!4 &497225272
 Transform:
@@ -360,6 +371,7 @@ MonoBehaviour:
   player_hand: []
   ai_hand: []
   discard_pile: []
+  ai_discard_pile: []
   blank: {fileID: 0}
   canvas: {fileID: 0}
   open1: 1
@@ -368,6 +380,12 @@ MonoBehaviour:
   slot1: {x: 0, y: 0, z: 0}
   slot2: {x: 0, y: 0, z: 0}
   slot3: {x: 0, y: 0, z: 0}
+  aiopen1: 1
+  aiopen2: 1
+  aiopen3: 1
+  aislot1: {x: 0, y: 0, z: 0}
+  aislot2: {x: 0, y: 0, z: 0}
+  aislot3: {x: 0, y: 0, z: 0}
   canvasCanas: {x: 0, y: 0}
 --- !u!4 &622756966
 Transform:
