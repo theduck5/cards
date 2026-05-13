@@ -158,8 +158,9 @@ MonoBehaviour:
   ai_deck:
   - {fileID: 11400000, guid: 4253cb031872b405fa7a9f5a77b326ac, type: 2}
   - {fileID: 11400000, guid: 4253cb031872b405fa7a9f5a77b326ac, type: 2}
-  - {fileID: 11400000, guid: 406bc51e371194b26a0a5639931ce9fa, type: 2}
-  - {fileID: 11400000, guid: 406bc51e371194b26a0a5639931ce9fa, type: 2}
+  - {fileID: 11400000, guid: 92385e96a18374f58adf99d2f8c7a3b7, type: 2}
+  - {fileID: 11400000, guid: 92385e96a18374f58adf99d2f8c7a3b7, type: 2}
+  - {fileID: 11400000, guid: 4253cb031872b405fa7a9f5a77b326ac, type: 2}
   player_hand: []
   ai_hand: []
   discard_pile: []
